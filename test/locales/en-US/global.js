@@ -1,0 +1,15 @@
+export default {
+    'menu.home': 'home',
+    'header.home': 'headerHome',
+    'breadcrumb.item': 'breadcrumbItem',
+    'breadcrumb.debugger': 'breadcrumbDebugger',
+    'global.error.network': 'network error',
+    'global.network.timeout': 'time out',
+    'global.network.error': 'Internet error',
+    'global.btn.ok': 'OK',
+    'upload.getUploadPolicyError': 'Upload failed',
+    'upload.networkError': 'Upload failed',
+    'upload.cancelled': 'Cancel task upload!',
+    'upload.formatError': 'file fomat error',
+    'upload.fileNameError': 'file name is too long',
+};

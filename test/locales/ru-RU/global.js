@@ -1,0 +1,15 @@
+export default {
+    'menu.home': 'жилище',
+    'header.home': 'платок',
+    'breadcrumb.item': 'хлебные крошки',
+    'breadcrumb.debugger': 'очиститель хлебных крошек',
+    'global.error.network': 'Ошибка сети',
+    'global.network.timeout': 'время до',
+    'global.network.error': 'ошибка Internet',
+    'global.btn.ok': 'OK',
+    'upload.networkError': 'Ошибка загрузки',
+    'upload.cancelled': 'отменить загрузку задания!',
+    'upload.formatError': 'ошибка формата файла',
+    'upload.fileNameError': 'слишком длинное имя файла',
+    'upload.getUploadPolicyError':'Ошибка загрузки',
+};

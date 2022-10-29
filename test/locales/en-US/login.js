@@ -1,0 +1,32 @@
+export default {
+    'login.error.emailEmpty': 'Please enter your email address.',
+    'login.error.emailInvalid': 'Sorry,this email is invalid.',
+    'login.error.emailLetterInvalid':
+        'Sorry, Only letters(a-z),numbers(0-9),and symbols(@._) are allowed.',
+    'login.error.emailNotFound': 'No account found with this email.',
+    'login.error.createWidthAccount': 'Create with this account？',
+    'login.error.pwdEmpty': 'Please enter a password.',
+    'login.error.pwdInvalid': 'Sorry,this password is incorrect.',
+    'login.error.pwdEqualMail': "Sorry, passwords can't match your email address",
+    'login.error.pwdLength': 'Passwords must have 8-16 characters.',
+    'login.error.pwdFormat':
+        'Password must have two categories from below:\n  numbers/letters/special character',
+    'login.error.specialSymbol':
+        'Sorry, Only letters(a-z),number(0-9),and special character(~!@#$%^&*()+-=,./;|<>?) are allowed',
+    'login.error.pwdNotEqual': "Those passwords didn't match",
+    'login.error.notLogin': 'You are not logged in, please log in.',
+    'login.error.verify': 'Please verify',
+    'login.label.forgotPwd': 'Forgot password?',
+    'login.label.email': 'Email',
+    'login.label.notAccount': 'No account?',
+    'login.label.createAccount': 'Create one',
+    'login.label.pwd': 'Password',
+    'login.title.account': 'Account',
+    'login.title.login': 'Log in',
+    'login.title.tips': 'Tips',
+    'login.btn.login': 'Log in',
+    'login.btn.confirm': 'Confirm',
+    'login.btn.ok': 'OK',
+    'login.placeHolder.email': 'Enter your email address',
+    'login.placeHolder.pwd': 'Enter your password',
+};
