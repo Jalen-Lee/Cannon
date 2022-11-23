@@ -1,31 +1,41 @@
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import {defineConfig} from "rollup";
-// rollup处理typescript的插件
 import typescript from '@rollup/plugin-typescript';
-// resolve将我们编写的源码与依赖的第三方库进行在之前的文章里面也有提到但是这里使用的@rollup/plugin-node-resolve
-import resolve from '@rollup/plugin-node-resolve';
-// 解决rollup.js无法识别CommonJS模块，这里使用的是@rollup/plugin-commonjs并不是之前提到的rollup-plugin-commonjs
+import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from "@rollup/plugin-commonjs";
-import tsConfig from './tsconfig.json'
+import json from '@rollup/plugin-json'
+import tsConfig from './tsconfig.json';
+
+
+const pkg = JSON.parse(
+    readFileSync(new URL('./package.json', import.meta.url)).toString()
+)
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 
 export default defineConfig({
-    input: 'src/index.ts',
+    input: {
+        index: path.resolve(__dirname,'src/index.ts'),
+        cli: path.resolve(__dirname,'src/cli.ts'),
+        constants: path.resolve(__dirname, 'src/constants.ts')
+    },
     output:[
         {
-            file: `dist/cTrans.cjs.js`,
+            dir: path.resolve(__dirname,'dist'),
+            // file: `cTrans.cjs.js`,
             // commonjs格式
             format: 'cjs',
         },
-        {
-            file: `dist/cTrans.es.js`,
-            // es module
-            format: 'es',
-        },
     ],
     plugins: [
+        json(),
         commonjs(),
-        typescript(),
-        resolve(),
+        nodeResolve(),
+        typescript({
+            tsconfig: path.resolve(__dirname,'./tsconfig.json')
+        }),
     ],
-    external:['esbuild']
+    external:['esbuild'],
 })

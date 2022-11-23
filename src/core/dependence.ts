@@ -1,51 +1,28 @@
 import Graph from "./graph";
-import {readFile, transformEsmToCjs, writeFile} from "../utils";
-import fse from "fs-extra";
-
+import {evalModuleCode} from "../utils";
 
 export interface DependenceProps{
-    name: string,
-    inTmpLocalePath: string,
-    inLocalePath: string
+    name: string;
+    sourcePath: string;
+    tempPath: string;
+    code: string;
+    default: Record<string, string>
 }
 
-export default class Dependence{
+export default class Dependence {
+    private readonly props: DependenceProps
     private readonly name: string = ''
-    private readonly options: DependenceProps
-    private graph?:Graph
+    private readonly code: string = ''
 
-    constructor(options: DependenceProps) {
-        this.options = options
-        this.name = options.name
-        // console.log('dep options',this.options)
-        this.transform()
-        this.buildGraph()
-    }
+    private graph: Graph
 
-    init(){
-
-    }
-
-    transform(){
-        const content = readFile(this.options.inLocalePath) || ''
-        if(content){
-            const cjsCode = transformEsmToCjs(content)
-            writeFile(this.options.inTmpLocalePath,cjsCode.code)
-        }else{
-            console.log(`${this.name}不能为空`)
-        }
-    }
-
-    buildGraph(){
-        if(!fse.existsSync(this.options.inTmpLocalePath)){
-            console.log(`${this.options.inTmpLocalePath}文件不存在`)
-            return
-        }
+    constructor(props: DependenceProps) {
+        this.props = props
+        this.name = props.name
+        this.code = props.code
         this.graph = new Graph({
-            path: this.options.inTmpLocalePath
+            map: props.default
         })
     }
-
-
-
 }
+
